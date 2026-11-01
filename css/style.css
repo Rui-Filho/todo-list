@@ -22,11 +22,16 @@
 }
 
 body {
-    background-image: url(../img/background.jpg);    
+    background-image:
+        linear-gradient(
+            rgba(20, 28, 5, 0.07),
+            rgba(20, 28, 5, 0.07)
+        ),
+        url(../img/background.webP);
+
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
 }
 
 /* Botões */
@@ -177,8 +182,8 @@ input::placeholder {
 
 
 
-.todo-container header {
-    font-size: 1.2rem;
+.todo-container header h1{
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-align: center;
@@ -228,10 +233,10 @@ input::placeholder {
 }
 
 #search {
+    flex: 1.8;
+    min-width: 0;
     border-right: 1px solid var(--verde-claro);
     padding-right: 1rem;
-    margin-right: 1rem;
-    width: 65%;
     display: flex;
     flex-direction: column;
 }
@@ -242,8 +247,7 @@ input::placeholder {
 }
 
 #search input{
-    width: 100%;
-    margin-right: 0.3rem;
+    width: 100%;    
     min-width: 0;
 }
 
@@ -255,7 +259,8 @@ input::placeholder {
 
 
 #filter {
-    width: 35%;
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
 }
@@ -274,14 +279,19 @@ input::placeholder {
     justify-content: space-between;
     align-items: center;
     gap: .5rem;
-    padding: 1rem;
-    margin-bottom: .7rem;
-    margin-top: .7rem;
+    padding: 1rem;   
     background-color: #fff;
     border: 1px solid #e2e5dc;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(20, 28, 5, 0.05);
     transition: .3s ease;
+}
+
+#todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    padding: .7rem 1rem;
 }
 
 .todo:hover {
@@ -298,9 +308,7 @@ input::placeholder {
     overflow-wrap: anywhere;
 }
 
-.todo button{
-    margin-left: .4rem;
-}
+
 
 
 
@@ -321,6 +329,14 @@ input::placeholder {
 /* Media query para adaptar pra celulares */
 
 @media (max-width: 480px) {
+
+    body {
+    background-attachment: scroll;
+    }
+
+    #todo-list {
+    padding: .5rem 0;
+    }
 
     .todo-container {
         width: calc(100% - 1.5rem);
