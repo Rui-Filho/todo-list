@@ -5,8 +5,18 @@
     padding: 0;
     margin: 0;
     font-family: Helvetica;
-    color:#333;
+    color:var(--escuro);
     box-sizing: border-box;
+    
+}
+
+/*Variáveis em CSS  */
+
+:root {
+    --claro: #eeeef0;
+    --escuro: #141c05;
+    --verde-claro: #657640;
+    --verde-escuro: #19220d;
     
 }
 
@@ -19,9 +29,9 @@ body {
 }
 
 button {
-    background-color: #fdfdfd;
-    color: #102f5e;
-    border: 2px solid #102f5e;
+    background-color: var(--claro);
+    color: var(--verde-escuro);
+    border: 2px solid var(--verde-escuro);
     padding: .3rem .6rem;
     font-size: 1rem;
     cursor: pointer;
@@ -33,8 +43,8 @@ button {
 }
 
 button:hover{
-    background-color: #102f5e;
-    color: #fdfdfd;
+    background-color: var(--escuro);
+    color:var(--claro);
 }
 
 button:hover > i {
@@ -42,7 +52,7 @@ button:hover > i {
 }
 
 button i {
-    color: #102f5e;
+    color: var(--verde-escuro);
     font-weight: bold;
     pointer-events: none;
 }
@@ -53,4 +63,118 @@ input,select {
 
 .hide{
     display: none;
+}
+
+/*Todo header  */
+
+.todo-container{
+    max-width: 450px;
+    margin: 3rem auto;
+    background-color: var(--claro);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
+
+.todo-container header {
+    text-align: center;
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid var(--verde-claro);
+}
+
+#todo-form,#edit-form {
+    padding: 1rem;
+    border-bottom: 1px solid var(--verde-claro);
+}
+
+#todo-form p,#edit-form p{
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-control {
+    display: flex;
+}
+
+.form-control input {
+    margin-right: 0.3rem;
+}
+
+#cancel-edit-btn {
+    margin-top: 1rem;
+}
+
+/*todo tollbar */
+
+#toolbar {
+    padding: 1rem;
+    border-bottom: 1px solid var(--verde-claro);
+    display: flex;
+}
+
+#toolbar h4{
+    margin-bottom: .5rem;
+}
+
+#search {
+    border-right: 1px solid var(--verde-claro);
+    padding-right: 1rem;
+    margin-right: 1rem;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+#search form{
+    display: flex;
+}
+
+#search input{
+    width: 100%;
+    margin-right: 0.3rem;
+}
+
+#filter {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+#filter select{
+    flex: 1;
+}
+
+/* todo list */
+
+
+
+.todo {
+
+    display: flex;  
+       
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--verde-claro);
+    transition: .3s;
+}
+
+.todo h3{
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.todo button{
+    margin-left: .4rem;
+}
+
+
+
+.done{
+    background-color: var(--verde-claro);
+}
+
+.done h3{
+    color: var(--claro);
+    text-decoration: line-through;
+    font-style: italic;
 }

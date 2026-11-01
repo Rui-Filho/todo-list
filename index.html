@@ -14,7 +14,7 @@
     <div class="todo-container">
 
         <header>
-            <h1>Todo avançado</h1>
+            <h1>LISTA DE TAREFAS</h1>
 
         </header>
 
@@ -38,7 +38,7 @@
 
         </form>
 
-        <form  id="edit-form" class="">
+        <form  id="edit-form" class="hide">
 
             <p>Edite a sua tarefa:</p>
 
@@ -56,10 +56,10 @@
 
             </div>
 
-             <button>
+             <button id="cancel-edit-btn">
 
 
-                    <i class="fa-solid fa-circle-xmark"></i>
+                    Cancelar
 
 
                 </button>
@@ -76,9 +76,11 @@
 
                     <input type="text" id="search-input" placeholder="Buscar">
 
-                    <button id="erase-button">
+                    <button id="eraser-button">
 
                         <i class="fa-solid fa-delete-left"></i>
+
+                        
 
                     </button>
 
@@ -102,7 +104,7 @@
 
         <div id="todo-list">
 
-            <div class="todo">
+            <div class="todo done">
 
                 <h3>Estou fazendo alguma coisa importante...</h3>
 
@@ -125,7 +127,14 @@
                     <i class="fa-solid fa-xmark"></i>
 
 
-                </button>
+                </button>              
+
+
+            </div>
+
+             <div class="todo">
+
+                
 
                  <h3>Estudar JavaScript...</h3>
 
@@ -150,8 +159,7 @@
 
                 </button>
 
-
-            </div>
+                </div>
 
 
         </div>
