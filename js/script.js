@@ -113,6 +113,7 @@ document.addEventListener("click", (e)=> {
     }
 
     if(targetEl.classList.contains("remove-todo")){
+        confirm("Remover tarefa?")
         parentEl.remove()
     }
 
@@ -141,6 +142,7 @@ editForm.addEventListener("submit", (e) => {
     const editInputValue = editInput.value
 
     if(editInputValue){
+        
         updateTodo(editInputValue)
 
     }
