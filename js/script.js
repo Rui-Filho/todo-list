@@ -7,7 +7,7 @@ const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn")
 
-let oldInputValue
+let todoIdToEdit;
 
 
 //Funções
@@ -16,6 +16,7 @@ const saveTodo = (text) => {
 
     const todo = document.createElement("div")
     todo.classList.add("todo")
+    todo.dataset.id = crypto.randomUUID()
 
     const todoTitle = document.createElement("h3")
     todoTitle.innerText = text
@@ -63,8 +64,10 @@ const updateTodo = (text) => {
     const todos = document.querySelectorAll(".todo")
 
     todos.forEach((todo)=> {
+        let todoID = todo.dataset.id
         let todoTitle = todo.querySelector("h3")
-        if(todoTitle.innerText===oldInputValue){
+        
+        if(todoID===todoIdToEdit){
             todoTitle.innerText = text
         }
     })
@@ -77,6 +80,8 @@ const updateTodo = (text) => {
 
 
 //Eventos
+
+
 
 todoForm.addEventListener("submit", (e) => {
 
@@ -113,17 +118,25 @@ document.addEventListener("click", (e)=> {
     }
 
     if(targetEl.classList.contains("remove-todo")){
-        confirm("Remover tarefa?")
+
+        if(confirm("Remover tarefa?")){
+
         parentEl.remove()
+
+        }
     }
 
 
     if(targetEl.classList.contains("edit-todo")){
         toggleForms()
         editInput.value = todoTitle
-        oldInputValue = todoTitle
+        todoIdToEdit = parentEl.dataset.id
+        
     }
 })
+
+
+
 
 
 cancelEditBtn.addEventListener("click", (e) => {
@@ -133,6 +146,10 @@ cancelEditBtn.addEventListener("click", (e) => {
     toggleForms()
     
 })
+
+
+
+
 
 
 editForm.addEventListener("submit", (e) => {
@@ -146,5 +163,7 @@ editForm.addEventListener("submit", (e) => {
         updateTodo(editInputValue)
 
     }
+
+    toggleForms()
 
 })
