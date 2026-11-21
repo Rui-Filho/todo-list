@@ -163,7 +163,7 @@ input::placeholder {
 }
 
 .hide{
-    display: none;
+    display: none !important;
 }
 
 /*Todo header  */
