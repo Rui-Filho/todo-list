@@ -1,5 +1,7 @@
 //Seleção de elementos
 
+console.log("SCRIPT.JS FOI CARREGADO!")
+
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
@@ -14,11 +16,14 @@ let todoIdToEdit;
 
 //Funções
 
-const saveTodo = (text) => {
+const saveTodo = (text, id = crypto.randomUUID(),done = false) => {
 
     const todo = document.createElement("div")
     todo.classList.add("todo")
-    todo.dataset.id = crypto.randomUUID()
+    todo.dataset.id = id
+    if(done){
+        todo.classList.add("done")
+    }
 
     const todoTitle = document.createElement("h3")
     todoTitle.innerText = text
@@ -40,8 +45,7 @@ const saveTodo = (text) => {
     todo.appendChild(deleteBtn)
 
     todoList.appendChild(todo)
-
-    updateLocalStorage()
+    
 
     todoInput.value = ""
 
@@ -112,6 +116,27 @@ const updateLocalStorage = () => {
 
 
 
+//Load - Carregar os dados persisitentes
+
+const loadTodos = () => {
+
+    console.log("A função loadTodos foi executada!")
+
+    const todos = JSON.parse(localStorage.getItem("todos"))
+
+    if(todos) {
+
+    todos.forEach((todo)=> {
+        
+        saveTodo(todo.text,todo.id,todo.done)
+    })
+
+   }
+
+}
+
+
+
 
 //Eventos
 
@@ -126,6 +151,7 @@ todoForm.addEventListener("submit", (e) => {
     if(inputValue){
         
         saveTodo(inputValue)
+        updateLocalStorage()
     }
 
     
@@ -271,6 +297,10 @@ filterSelect.addEventListener("change",(e) => {
 
 
 })
+
+
+
+loadTodos()
 
 
 
