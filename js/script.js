@@ -1,6 +1,5 @@
 //Seleção de elementos
 
-console.log("SCRIPT.JS FOI CARREGADO!")
 
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
@@ -120,18 +119,18 @@ const updateLocalStorage = () => {
 
 const loadTodos = () => {
 
-    console.log("A função loadTodos foi executada!")
+    
 
     const todos = JSON.parse(localStorage.getItem("todos"))
 
+    
+
     if(todos) {
-
-    todos.forEach((todo)=> {
-        
-        saveTodo(todo.text,todo.id,todo.done)
-    })
-
-   }
+        todos.forEach((todo) => {
+            
+            saveTodo(todo.text, todo.id, todo.done)
+        })
+    }
 
 }
 
