@@ -41,6 +41,8 @@ const saveTodo = (text) => {
 
     todoList.appendChild(todo)
 
+    updateLocalStorage()
+
     todoInput.value = ""
 
     todoInput.focus()
@@ -75,6 +77,36 @@ const updateTodo = (text) => {
     })
 
 
+
+}
+
+
+//Local Sotorage
+
+
+const updateLocalStorage = () => {
+
+    const todos = document.querySelectorAll(".todo")
+
+    const array = []
+
+    todos.forEach((todo)=> {
+
+        let id = todo.dataset.id
+        let text = todo.querySelector("h3").innerText
+        let done = todo.classList.contains("done")
+
+        const todoObject = {
+            id,
+            text,
+            done,
+        }
+
+        array.push(todoObject)
+
+    })
+
+    localStorage.setItem("todos",JSON.stringify(array))
 
 }
 
@@ -116,6 +148,8 @@ document.addEventListener("click", (e)=> {
     if(targetEl.classList.contains("finish-todo")){
 
         parentEl.classList.toggle("done")
+
+        updateLocalStorage()
         
     }
 
@@ -124,6 +158,8 @@ document.addEventListener("click", (e)=> {
         if(confirm("Remover tarefa?")){
 
         parentEl.remove()
+
+        updateLocalStorage()
 
         }
     }
@@ -164,6 +200,8 @@ editForm.addEventListener("submit", (e) => {
         
         updateTodo(editInputValue)
 
+        updateLocalStorage()
+
     }
 
     toggleForms()
@@ -182,8 +220,8 @@ searchInput.addEventListener("input", (e) => {
     
 
     todos.forEach((todo) => {
-        let todoTitle = todo.querySelector("h3").innerText.toLowerCase()
 
+        let todoTitle = todo.querySelector("h3").innerText.toLowerCase()
         
 
         if(todoTitle.includes(searchTerm)){
@@ -233,3 +271,8 @@ filterSelect.addEventListener("change",(e) => {
 
 
 })
+
+
+
+
+
