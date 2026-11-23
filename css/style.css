@@ -323,6 +323,32 @@ input::placeholder {
     font-style: italic;
 }
 
+/* Footer */
+
+
+
+.footer {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--verde-escuro);
+    font-size: .85rem;
+}
+
+.footer a {
+    color: var(--verde-escuro);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .5s ease;
+}
+
+.footer a:hover {
+    color: var(--verde-claro);
+    text-decoration: underline;
+}
+
+
 
 
 

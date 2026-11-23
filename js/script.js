@@ -43,12 +43,7 @@ const saveTodo = (text, id = crypto.randomUUID(),done = false) => {
     deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>'
     todo.appendChild(deleteBtn)
 
-    todoList.appendChild(todo)
-    
-
-    todoInput.value = ""
-
-    todoInput.focus()
+    todoList.appendChild(todo) 
 
     
 
@@ -71,8 +66,8 @@ const updateTodo = (text) => {
     const todos = document.querySelectorAll(".todo")
 
     todos.forEach((todo)=> {
-        let todoID = todo.dataset.id
-        let todoTitle = todo.querySelector("h3")
+        const todoID = todo.dataset.id
+        const todoTitle = todo.querySelector("h3")
         
         if(todoID===todoIdToEdit){
             todoTitle.innerText = text
@@ -151,6 +146,8 @@ todoForm.addEventListener("submit", (e) => {
         
         saveTodo(inputValue)
         updateLocalStorage()
+         todoInput.value = ""
+         todoInput.focus()
     }
 
     
